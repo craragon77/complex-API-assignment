@@ -3,15 +3,19 @@ function fetchRequest(username) {
     .then(response =>{
         if(response.ok){
             response.json()
+            .then(responseJson => console.warn(responseJson))
+            .then(responseJson => displayResults(responseJson))
         } else{
             throw new Error(response.statusText)
         }
     })
-    .then(responseJson => console.warn(responseJson))
     .catch(error => console.log("Oh No! Something went wrong! Try again later I guess?"))
 }
 
-function displayResults() {
+function displayResults(responseJson) {
+    for (let i = 0; i < responseJson.message.length; i++){
+        console.log(responseJson.message[i])
+    }
     $(".section").replaceWith(
         `<section class="results"></section>`
     )
