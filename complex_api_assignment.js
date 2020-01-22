@@ -1,13 +1,13 @@
 function fetchRequest(username) {
-    fetch('https://api.github.com/users/:' + username + '/repos')
+    fetch('https://api.github.com/users/' + username + '/repos')
     .then(response =>{
         if(response.ok){
             response.json()
         } else{
-            throw new Error(response.statusText);
+            throw new Error(response.statusText)
         }
     })
-    .then(responseJson => console.log(responseJson))
+    .then(responseJson => console.warn(responseJson))
     .catch(error => console.log("Oh No! Something went wrong! Try again later I guess?"))
 }
 
